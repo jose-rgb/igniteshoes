@@ -6,6 +6,19 @@ import { OneSignal, NotificationWillDisplayEvent, OSNotification } from 'react-n
 import { AppRoutes } from './app.routes';
 import { Notification } from '../components/Notification';
 
+const linking = {
+  prefixes: ["igniteshoes://", "com.drjsoftwares.igniteshoes://"],
+  config: {
+    screens: {
+      details: {
+        path: "/details/:productId",
+        parse: {
+          productId: (productId: string) => productId,
+        },
+      },
+    },
+  },
+}
 
 export function Routes() {
   const { colors } = useTheme();
@@ -34,7 +47,7 @@ export function Routes() {
   },[])
 
   return (
-    <NavigationContainer theme={theme}>
+    <NavigationContainer theme={theme} linking={linking}>
       <AppRoutes />
 
       {
