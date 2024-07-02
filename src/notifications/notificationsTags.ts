@@ -7,3 +7,7 @@ export function tagUserInfoCreate() {
 
     })
 }
+
+export function tagCartUpdate(itemsCount: string) {
+    OneSignal.User.addTag("cart_items_count", itemsCount)
+}
